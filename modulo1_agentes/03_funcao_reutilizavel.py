@@ -9,6 +9,7 @@
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
+from time import sleep
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENROUTER_API_KEY"),
@@ -40,6 +41,12 @@ def perguntar(pergunta: str,
 
 
 # ── Testando com diferentes system prompts ───────────────────
+print("\n")
+print("Observe como o mesmo modelo responde de formas diferentes dependendo do system prompt!")
+print("Não digite nada, apenas veja as respostas geradas para a mesma pergunta com estilos distintos.\n")
+
+sleep(3)
+
 print("🔵 Assistente padrão:")
 print(perguntar("Qual a diferença entre ML e Deep Learning?"))
 

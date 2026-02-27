@@ -9,6 +9,7 @@
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
+from time import sleep
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENROUTER_API_KEY"),
@@ -44,6 +45,12 @@ def conversar(mensagem_usuario: str) -> str:
 
 
 # ── Demonstração: o modelo lembra do contexto ────────────────
+print("\n")
+print("Vamos testar a memória de conversa! O modelo deve lembrar do que falamos antes.\n")
+print("Não se preocupe em digitar, apenas observe as mensagens e respostas.\n")
+
+sleep(2)
+
 print("👤 Você: Meu nome é João e estou aprendendo IA com Python")
 print("🤖 IA:", conversar("Meu nome é João e estou aprendendo IA com Python"))
 
