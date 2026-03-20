@@ -18,7 +18,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENROUTER_API_KEY"),
                 base_url="https://openrouter.ai/api/v1")
 
-MODEL = "openrouter/auto"
+MODEL = os.getenv("MODEL")
 
 # ── Fazendo a primeira chamada ───────────────────────────────
 resposta = client.chat.completions.create(

@@ -2,7 +2,7 @@
 
 Neste módulo você faz sua primeira conexão real com um modelo de linguagem via Python, entende como a API funciona por dentro e constrói um chat interativo com memória de conversa.
 
-> ⚠️ **Antes de começar:** certifique-se de ter seguido todos os passos do [README principal](../README.md) — WSL, UV, ambiente virtual ativo e arquivo `.env` configurado.
+> ⚠️ **Antes de começar:** certifique-se de ter seguido todos os passos do [README principal](../README.md) — WSL, UV, ambiente virtual ativo e arquivo `.env` configurado com `OPENROUTER_API_KEY` e `MODEL`.
 
 ---
 
@@ -27,13 +27,13 @@ uv add openai python-dotenv
 
 ## 📂 Arquivos e ordem de execução
 
-| Arquivo                     | Conceito                                  |
-|-----------------------------|-------------------------------------------|
-| `01_setup.py`               | Verifica se o ambiente está configurado   |
-| `02_primeira_chamada.py`    | Primeira chamada real a um LLM            |
-| `03_funcao_reutilizavel.py` | Funções limpas com diferentes personas    |
-| `04_memoria_conversa.py`    | Histórico de mensagens e memória          |
-| `05_desafio_chat.py`        | 🏁 Projeto final: chat interativo         |
+| Arquivo                       | Conceito                                  |
+|-------------------------------|-------------------------------------------|
+| `01_setup.py`                 | Verifica se o ambiente está configurado   |
+| `02_primeira_chamada.py`      | Primeira chamada real a um LLM            |
+| `03_funcao_reutilizavel.py`   | Funções limpas com diferentes personas    |
+| `04_memoria_conversa.py`      | Histórico de mensagens e memória          |
+| `05_desafio_chat.py`          | 🏁 Projeto final: chat interativo         |
 
 ---
 
@@ -59,11 +59,11 @@ uv run modulo1_agentes/05_desafio_chat.py
 
 Toda chamada à API é uma lista de mensagens. Cada mensagem tem um papel:
 
-| Role        | Para que serve                                      |
-|-------------|-----------------------------------------------------|
-| `system`    | Define o comportamento e personagem do modelo       |
-| `user`      | A mensagem que você envia                           |
-| `assistant` | A resposta do modelo (usada para montar o histórico)|
+| Role        | Para que serve                                       |
+|-------------|------------------------------------------------------|
+| `system`    | Define o comportamento e personagem do modelo        |
+| `user`      | A mensagem que você envia                            |
+| `assistant` | A resposta do modelo (usada para montar o histórico) |
 
 **Tokens**
 
@@ -72,6 +72,10 @@ Modelos não leem palavras — leem tokens. Um token equivale a aproximadamente 
 **Stateless e memória**
 
 LLMs não têm memória entre chamadas. Para simular uma conversa contínua, você envia o histórico completo a cada nova mensagem — é exatamente o que o arquivo `04_memoria_conversa.py` demonstra.
+
+**Variável MODEL no .env**
+
+O modelo usado nas chamadas é lido do arquivo `.env` via `os.getenv("MODEL")`. Isso permite trocar o modelo sem tocar no código — basta alterar uma linha no `.env`. O valor padrão `openrouter/free` garante que apenas modelos 100% gratuitos sejam usados.
 
 ---
 
@@ -86,3 +90,7 @@ Antes de avançar para o próximo módulo, confirme que você conseguiu:
 - [ ] Ter uma conversa completa pelo terminal no `05_desafio_chat.py`
 
 ---
+
+## ➡️ Próximo módulo
+
+[Módulo 2 — Machine Learning](../modulo2_ml/README.md)

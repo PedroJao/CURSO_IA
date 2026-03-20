@@ -9,7 +9,7 @@ Bem-vindo ao curso prático de IA com Python! Este repositório contém todos os
 | Módulo | Tema                   | Semanas | Status       |
 |--------|------------------------|---------|--------------|
 | 1      | Fundação — LLMs e APIs | 1–4     | ✅ Disponível |
-| 2      | Machine Learning       | 5–9     | 🔜 Em breve  |
+| 2      | Machine Learning       | 5–9     | ✅ Disponível |
 | 3      | Prompt Engineering     | 10–13   | 🔜 Em breve  |
 | 4      | Ferramentas e Memória  | 14–17   | 🔜 Em breve  |
 | 5      | Frameworks de Agentes  | 18–21   | 🔜 Em breve  |
@@ -109,7 +109,13 @@ O OpenRouter dá acesso a dezenas de modelos de IA (incluindo modelos gratuitos)
 3. Escolha **"Continue with Google"** (ou crie uma conta com e-mail)
 4. Siga os passos de autenticação
 
-**3.2 — Criar uma nova API Key**
+**3.2 — Acessar a área de API Keys**
+
+1. Após fazer login, clique no seu avatar/foto no canto superior direito
+2. Clique em **"Keys"** no menu que aparecer
+3. Você verá a tela de gerenciamento de chaves
+
+**3.3 — Criar uma nova API Key**
 
 1. Clique no botão **"Create Key"**
 2. Dê um nome para identificar a chave, por exemplo: `curso-ia-python`
@@ -118,13 +124,13 @@ O OpenRouter dá acesso a dezenas de modelos de IA (incluindo modelos gratuitos)
 
 > ⚠️ **IMPORTANTE:** A chave só é exibida uma vez. Copie e guarde em local seguro antes de fechar a janela. Se perder, será necessário criar uma nova.
 
-**3.3 — Verificar os créditos gratuitos**
+**3.4 — Verificar os créditos gratuitos**
 
 1. Clique no seu avatar novamente
 2. Acesse **"Credits"**
 3. Você verá o saldo disponível
 
-> 💡 **Modelos gratuitos:** Durante o curso usamos `openrouter/auto` — um roteador que seleciona automaticamente um modelo gratuito disponível no momento, evitando erros por modelos descontinuados. Você pode ver todos os modelos gratuitos em **openrouter.ai/models** filtrando por "Free".
+> 💡 **Modelos gratuitos:** Durante o curso usamos `openrouter/free` — um roteador que seleciona automaticamente um modelo 100% gratuito disponível no momento, garantindo que nenhum aluno seja cobrado. Você pode ver todos os modelos gratuitos em **openrouter.ai/models** filtrando por "Free".
 
 ---
 
@@ -143,6 +149,8 @@ cd CURSO_IA
 uv init
 ```
 
+Isso cria os arquivos base do projeto, incluindo o `pyproject.toml` que gerencia as dependências.
+
 **4.3 — Crie e ative o ambiente virtual**
 
 ```bash
@@ -150,10 +158,10 @@ uv venv
 source .venv/bin/activate
 ```
 
-Você saberá que o ambiente está ativo quando o terminal mostrar `CURSO_IA` no início da linha:
+Você saberá que o ambiente está ativo quando o terminal mostrar `(.venv)` no início da linha:
 
 ```
-(CURSO_IA) usuario@maquina:~/CURSO_IA$
+(.venv) usuario@maquina:~/CURSO_IA$
 ```
 
 > 💡 **Importante:** sempre que abrir um novo terminal, rode `source .venv/bin/activate` antes de rodar qualquer arquivo do curso.
@@ -161,23 +169,40 @@ Você saberá que o ambiente está ativo quando o terminal mostrar `CURSO_IA` no
 **4.4 — Crie o arquivo `.env` a partir do exemplo**
 
 ```bash
-touch .env
 cp .env.example .env
+nano .env
 ```
 
-Substitua `SUA_CHAVE_AQUI` pela sua chave real criada no openrouter.ai.
+Substitua `sk-or-v1-SUA_CHAVE_AQUI` pela sua chave real. O arquivo `.env` final deve ficar exatamente assim:
+
+```
+OPENROUTER_API_KEY=sk-or-v1-...sua chave real aqui...
+MODEL=openrouter/free
+```
+
+> ⚠️ **Atenção ao formato:** não use espaços ao redor do `=`. Escrever `MODEL = openrouter/free` faz o Python não reconhecer a variável — o correto é `MODEL=openrouter/free`.
+
+Salve com `Ctrl+O`, Enter, e saia com `Ctrl+X`.
 
 > ⚠️ O `.env` já está no `.gitignore` e nunca será enviado ao GitHub. O `.env.example` é seguro pois não contém nenhuma chave real.
+
+**4.5 — Instale as dependências do Módulo 1**
+
+```bash
+uv add openai python-dotenv
+```
 
 ---
 
 ## 🚀 Passo 5 — Começar o Módulo 1
 
-Com o ambiente configurado, abra a pasta do primeiro módulo
+Com o ambiente configurado, acesse a pasta do primeiro módulo e siga o README de lá:
 
-`modulo1_agentes`
+```bash
+cd modulo1_agentes
+```
 
-Dentro dessa pasta, você vai encontrar o `modulo1.md`, a partir dessa documentação você vai dar seus primeiros passos no **Curso de IA**.
+Cada módulo tem seu próprio README com a lista de arquivos, conceitos e ordem de execução.
 
 ---
 
@@ -191,14 +216,23 @@ Se não resolver, feche e abra o terminal novamente.
 
 **"OPENROUTER_API_KEY não encontrada"**
 
-Verifique se o arquivo `.env` está na raiz do projeto e se a chave está no formato correto, sem espaços antes ou depois do `=`:
+Verifique se o arquivo `.env` está na raiz do projeto e se as variáveis estão no formato correto, sem espaços antes ou depois do `=`:
 ```
 OPENROUTER_API_KEY=sk-or-v1-...
+MODEL=openrouter/free
+```
+
+**"No models provided" ou erro 400**
+
+A variável `MODEL` não foi encontrada no `.env`. Verifique se ela existe e se está sem espaços ao redor do `=`:
+```
+MODEL=openrouter/free   ← correto
+MODEL = openrouter/free ← errado, espaços impedem a leitura
 ```
 
 **"ModuleNotFoundError: No module named 'openai'"**
 
-O ambiente virtual não está ativo ou as dependências não foram instaladas:
+O ambiente virtual não está ativo ou as dependências não foram instaladas. Verifique se o terminal mostra `(.venv)` no início da linha. Se não mostrar:
 ```bash
 source .venv/bin/activate
 uv add openai python-dotenv
@@ -214,24 +248,19 @@ Limite do modelo gratuito atingido. Aguarde alguns minutos e tente novamente.
 
 **"NotFoundError" ou erro 404 — "No endpoints found for..."**
 
-O modelo foi descontinuado no OpenRouter. Abra o arquivo que falhou e troque:
-```python
-MODEL = "openrouter/auto"
+O modelo foi descontinuado no OpenRouter. Verifique se a variável `MODEL` no seu `.env` está como:
+```
+MODEL=openrouter/free
 ```
 
 **"APIStatusError" ou erro 402 — "USD spend limit exceeded"**
 
-Provedor com limite de gasto atingido. Use `openrouter/auto` como solução:
-```python
-MODEL = "openrouter/auto"
-```
+Provedor com limite de gasto atingido. Certifique-se de que o `.env` contém `MODEL=openrouter/free` para garantir uso apenas de modelos gratuitos.
 
-**"BadRequestError" ou erro 400 — "is not a valid model ID"**
+---
 
-O valor da variável `MODEL` está incorreto. Verifique se está exatamente assim, sem caracteres extras:
-```python
-MODEL = "openrouter/auto"
-```
+## 🤝 Contribuindo
 
+Encontrou algum problema ou tem uma sugestão? Abra uma **Issue** ou envie um **Pull Request**. Este curso é feito para a comunidade!
 
-
+---
