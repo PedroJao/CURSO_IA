@@ -93,4 +93,4 @@ Antes de avançar para o próximo módulo, confirme que você conseguiu:
 
 ## ➡️ Próximo módulo
 
-[Módulo 2 — Machine Learning](../modulo2_ml/README.md)
+[Módulo 2 — Machine Learning](../modulo2_ml/modulo2.md)

@@ -161,7 +161,7 @@ source .venv/bin/activate
 Você saberá que o ambiente está ativo quando o terminal mostrar `(.venv)` no início da linha:
 
 ```
-(.venv) usuario@maquina:~/CURSO_IA$
+(CURSO_IA) usuario@maquina:~/CURSO_IA$
 ```
 
 > 💡 **Importante:** sempre que abrir um novo terminal, rode `source .venv/bin/activate` antes de rodar qualquer arquivo do curso.
@@ -259,8 +259,3 @@ Provedor com limite de gasto atingido. Certifique-se de que o `.env` contém `MO
 
 ---
 
-## 🤝 Contribuindo
-
-Encontrou algum problema ou tem uma sugestão? Abra uma **Issue** ou envie um **Pull Request**. Este curso é feito para a comunidade!
-
----
