@@ -10,7 +10,7 @@ Bem-vindo ao curso prático de IA com Python! Este repositório contém todos os
 |--------|------------------------|---------|--------------|
 | 1      | Fundação — LLMs e APIs | 1–4     | ✅ Disponível |
 | 2      | Machine Learning       | 5–9     | ✅ Disponível |
-| 3      | Prompt Engineering     | 10–13   | 🔜 Em breve  |
+| 3      | Prompt Engineering     | 10–13   | ✅ Disponível |
 | 4      | Ferramentas e Memória  | 14–17   | 🔜 Em breve  |
 | 5      | Frameworks de Agentes  | 18–21   | 🔜 Em breve  |
 | 6      | Redes Neurais          | 22–29   | 🔜 Em breve  |
